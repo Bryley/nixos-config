@@ -45,6 +45,11 @@
         jack.enable = true;
     };
 
+    ### Security ###
+
+    security.polkit.enable = true;
+    security.pam.services.gtklock = {}; # Need for gtklock to work
+
     ### Misc ###
 
     time.timeZone = "Australia/Brisbane";

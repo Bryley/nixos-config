@@ -5,15 +5,15 @@
 # - [ ] Better Hyprland
 # - [X] Nerd Fonts across system
 # - [X] Waybar
-#   - [ ] Fix middle thing that has desktops on it and autostarts
+#   - [X] Fix middle thing that has desktops on it and autostarts
 # - [ ] Nvidia drivers and stuff
 # - [ ] ZSH change fast theme to base-16 automatically
 # - [ ] LSP servers Nvim
-# - [ ] Garbage Collection of nix system
+# - [X] Garbage Collection of nix system
 # - [X] Wallpaper
 # - [X] Sound
-# - [ ] Redshift
-# - [ ] GTKLock
+# - [X] GTKLock
+# - [X] Redshift
 # - [ ] Multiple Configs
 # - [ ] Convert some configs to Home-Manager
 # - [ ] Turn into git repo
