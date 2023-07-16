@@ -37,7 +37,7 @@ genhost() {
     echo "Generated '$HOSTDIR/default.nix'"
     echo "$CONF_NIX_TEMPLATE" > $HOSTDIR/configuration.nix
     echo "Generated '$HOSTDIR/configuration.nix'"
-    nixos-generate-config --show-hardware-config > $HOSTDIR/hardware-configuration.nix
+    nixos-generate-config --root /mnt --show-hardware-config > $HOSTDIR/hardware-configuration.nix
     echo "Generated '$HOSTDIR/hardware-configuration.nix'"
 
     echo "All done, make sure to edit ./hosts/default.nix to add '$HOSTNAME' to the list."

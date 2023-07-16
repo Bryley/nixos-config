@@ -43,10 +43,12 @@ For NixOS you will need a:
     Space on the end that acts as space to backup your RAM if it ever gets too
     full.
 
+```
 +--------------------------------------------------+
 |####|##################################|##########|
 |Boot| File System                      | Swap 8GB |
 +--------------------------------------------------+
+```
 
 ```
 sudo parted /dev/nvme0n1
@@ -131,3 +133,8 @@ You will also need to add the following to the return value in
 After that now you can install your system by running `nixos-install --flake .#<host>`.
 
 This should install and setup the entire system.
+
+
+## Notes
+
+Cool Wallpaper: https://unsplash.com/photos/4hluhoRJokI
