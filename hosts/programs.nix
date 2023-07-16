@@ -40,6 +40,7 @@
         nil         # Nix language server
         lua-language-server # Language server for lua
         nodePackages.pyright # Python language server
+        ltex-ls     # Latex and markdown Language server
 
         # GUI Applications #
 
