@@ -44,6 +44,7 @@
         pulse.enable = true;
         jack.enable = true;
     };
+    hardware.bluetooth.enable = true;
 
     ### Security ###
 
@@ -52,6 +53,7 @@
 
     ### Misc ###
 
+    services.udisks2.enable = true; # USB mounting
     time.timeZone = "Australia/Brisbane";
     services.xserver.layout = "au";
 

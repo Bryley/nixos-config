@@ -10,6 +10,11 @@ in {
             config.allowUnfree = true;
         };
         modules = [
+            {
+                # pin system nixpkgs to the same version as the flake input
+                # (don't see a way to declaratively set channels but this seems to work fine?)
+                nix.nixPath = [ "nixpkgs=${nixpkgs}" ];
+            }
             hyprland.nixosModules.default
             ./laptop
             ../homes/${user}/configuration.nix
@@ -29,6 +34,11 @@ in {
             config.allowUnfree = true;
         };
         modules = [
+            {
+                # pin system nixpkgs to the same version as the flake input
+                # (don't see a way to declaratively set channels but this seems to work fine?)
+                nix.nixPath = [ "nixpkgs=${nixpkgs}" ];
+            }
             hyprland.nixosModules.default
             ./desktop
             ../homes/${user}/configuration.nix
