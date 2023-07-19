@@ -43,10 +43,12 @@ For NixOS you will need a:
     Space on the end that acts as space to backup your RAM if it ever gets too
     full.
 
+```
 +--------------------------------------------------+
 |####|##################################|##########|
 |Boot| File System                      | Swap 8GB |
 +--------------------------------------------------+
+```
 
 ```
 sudo parted /dev/nvme0n1
@@ -160,3 +162,7 @@ permissions so my user group (in this case `bryley`) has ownership of the files:
 ```
 mv /mnt/nixos-config /mnt/home/bryley
 ```
+
+## Notes
+
+Cool Wallpaper: https://unsplash.com/photos/4hluhoRJokI

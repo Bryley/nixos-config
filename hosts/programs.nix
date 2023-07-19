@@ -13,9 +13,16 @@
            mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
         });
     };
+    services.blueman.enable = true;
     programs.zsh.enable = true;
     programs.steam.enable = true;
+
+    # Command not found alternative for flakes
     programs.command-not-found.enable = true;
+    # programs.nix-index = {
+    #     enable = true;
+    #     enableZshIntegration = true;
+    # };
 
     environment.systemPackages = with pkgs; [
 
@@ -31,6 +38,8 @@
         yt-dlp      # Youtube downloader
         neofetch    # Display's system information
         evince      # PDF viewer
+        zip         # Zipping application
+        unzip       # Unzipping application
 
         # Neovim #
 
@@ -51,9 +60,15 @@
         wl-clipboard # To get clipboard working on hyprland
         android-file-transfer # For uploading files to my android device
         gammastep   # Bluelight reducing application
+        cinnamon.nemo-with-extensions # File manager
         udiskie     # USB manager
         dunst       # Notification manager
         polkit_gnome # Authentication Agent
+        pavucontrol # Audio control
+        audacity    # Audio editor
+        obs-studio  # Recording software
+        obsidian    # Markdown editor
+        vlc         # Audio and video player
 
         prismlauncher # Minecraft Launcher
     ];
