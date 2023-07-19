@@ -95,7 +95,7 @@ nix --extra-experimental-features "nix-command flakes" shell nixpkgs#git
 Now you will have git until you type "exit"
 
 ```
-git clone https://github.com/Bryley/nixos-config.git /mnt/nixos/nixos-config
+git clone https://github.com/Bryley/nixos-config.git /mnt/nixos-config
 ```
 
 Now if you are using a new host computer that has not had NixOS setup on it
@@ -128,6 +128,35 @@ You will also need to add the following to the return value in
 
 ```
 
-After that now you can install your system by running `nixos-install --flake .#<host>`.
+After that now you can install your system by running
+```
+git add .                           # Needed as flakes read git data
+nixos-install --flake .#<host>`.    # Installs NixOS system
+```
 
 This should install and setup the entire system.
+
+Now reboot into the hardrive.
+
+When starting up, login to root using the password you set then set a password
+for your user (in my case 'bryley' user):
+
+```
+# passwd bryley
+```
+
+You should also move the configuration into your home directory and change
+permissions:
+
+```
+# mv /nixos-config ~
+# chown -R bryley:users ~/nixos-config
+```
+
+Once this is done you should move your configuration into an easier location to
+access. In my case I like it in `~/nixos-config`. Then also change the
+permissions so my user group (in this case `bryley`) has ownership of the files:
+
+```
+mv /mnt/nixos-config /mnt/home/bryley
+```
