@@ -106,7 +106,7 @@ lsp.hls.setup({
     capabilities = capabilities,
     on_attach = on_attach,
 })
-lsp.nil_ls.setup({
+lsp.nixd.setup({
     capabilities = capabilities,
     on_attach = on_attach,
 })
