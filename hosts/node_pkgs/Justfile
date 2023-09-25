@@ -1,0 +1,5 @@
+# vim: ft=make
+
+build:
+	node2nix -i node-packages.json
+
