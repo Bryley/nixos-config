@@ -12,6 +12,9 @@
 
     boot.kernelPackages = pkgs.linuxPackages_latest; # Use latest kernel
 
+    # Add better boot animation
+    boot.plymouth.enable = true;
+
     ### Nix Options ###
 
     nix = {

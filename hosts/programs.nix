@@ -69,6 +69,10 @@
         obs-studio  # Recording software
         obsidian    # Markdown editor
         vlc         # Audio and video player
+        libreoffice # Libreoffice
+        gimp        # Photo editor
+
+        (python3.withPackages (ps: with ps; [ numpy pandas matplotlib ]))
 
         prismlauncher # Minecraft Launcher
     ];
