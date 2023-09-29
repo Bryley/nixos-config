@@ -94,6 +94,10 @@ lsp.ltex.setup({
     capabilities = capabilities,
     on_attach = on_attach,
 })
+lsp.kotlin_language_server.setup({
+    capabilities = capabilities,
+    on_attach = on_attach,
+})
 lsp.gopls.setup({
     capabilities = capabilities,
     on_attach = on_attach,
@@ -106,7 +110,11 @@ lsp.hls.setup({
     capabilities = capabilities,
     on_attach = on_attach,
 })
-lsp.nil_ls.setup({
+lsp.nixd.setup({
+    capabilities = capabilities,
+    on_attach = on_attach,
+})
+lsp.dartls.setup({
     capabilities = capabilities,
     on_attach = on_attach,
 })

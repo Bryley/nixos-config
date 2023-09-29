@@ -53,6 +53,7 @@ return {
                     -- TODO put these in the install scripts
                     require("null-ls").builtins.formatting.black,
                     require("null-ls").builtins.formatting.stylua,
+                    require("null-ls").builtins.formatting.nixfmt,
                     require("null-ls").builtins.formatting.prettier.with({
                         extra_args = { "--tab-width", "4" },
                     }),

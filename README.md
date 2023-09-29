@@ -166,3 +166,9 @@ mv /mnt/nixos-config /mnt/home/bryley
 ## Notes
 
 Cool Wallpaper: https://unsplash.com/photos/4hluhoRJokI
+
+Add davfs2/secrets file:
+
+```bash
+mkdir -p ~/.davfs2 && echo "https://hayman.click/remote.php/dav/files/bryley/ /home/bryley/nextcloud bryley \"REPLACE ME WITH PASSWORD\"" > ~/.davfs2/secrets && sudo chmod 0600 ~/.davfs2/secrets
+```
