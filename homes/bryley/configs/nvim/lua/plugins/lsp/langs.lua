@@ -63,6 +63,10 @@ lsp.svelte.setup({
     capabilities = capabilities,
     on_attach = on_attach,
 })
+lsp.tailwindcss.setup({
+    capabilities = capabilities,
+    on_attach = on_attach,
+})
 lsp.rust_analyzer.setup({
     capabilities = capabilities,
     on_attach = on_attach,

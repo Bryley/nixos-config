@@ -1,6 +1,7 @@
 [
     "@ionic/cli",
     "@vtsls/language-server",
+    "@tailwindcss/language-server",
     "vscode-json-languageservice",
     "nativescript"
 ]

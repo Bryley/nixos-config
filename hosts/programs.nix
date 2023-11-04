@@ -81,6 +81,8 @@ in {
     # customNodePkgs."nativescript" # Nativescript cli tool
     flutter # Flutter Crossplatform app dev
     xdg-utils # Adds some xdg-open commands and stuff
+    nodePackages.tailwindcss # Tailwind cli tool
+    cargo-generate # Generates templates from rust cargo
 
     # Neovim #
 
@@ -131,7 +133,7 @@ in {
 
     libreoffice # Microsoft Office Alternative
     dbeaver # DB UI Software
-    postman # Restful API client
+    # postman # Restful API client
 
     # (import ./custom_pkgs/gdlauncher.nix { inherit pkgs; }) # Minecraft
     # customJdkVersion.openjdk8
