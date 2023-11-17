@@ -70,6 +70,13 @@ lsp.tailwindcss.setup({
 lsp.rust_analyzer.setup({
     capabilities = capabilities,
     on_attach = on_attach,
+    settings = {
+        ["rust-analyzer"] = {
+            cargo = {
+                allFeatures = true,
+            },
+        },
+    },
 })
 lsp.dockerls.setup({
     capabilities = capabilities,

@@ -18,6 +18,17 @@ let
   }) { system = "x86_64-linux"; };
 in {
 
+  # Nix-ld helps with running random executables and library linking
+  # programs.nix-ld.enable = true;
+  # environment.variables = {
+  #   NIX_LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [
+  #     pkgs.stdenv.cc.cc
+  #     pkgs.openssl
+  #     # add here the libraries you want...
+  #   ];
+  #   NIX_LD = pkgs.lib.fileContents "${pkgs.stdenv.cc}/nix-support/dynamic-linker";
+  # };
+
   programs.git.enable = true;
   programs.hyprland = {
     enable = true;
@@ -32,6 +43,17 @@ in {
   services.blueman.enable = true;
   programs.zsh.enable = true;
   programs.steam.enable = true;
+  hardware.opengl.driSupport32Bit = true;
+
+  nixpkgs.overlays = [
+    (final: prev: {
+      steam = prev.steam.override ({ extraPkgs ? pkgs': [], ... }: {
+        extraPkgs = pkgs': (extraPkgs pkgs') ++ (with pkgs'; [
+          libgdiplus
+        ]);
+      });
+    })
+  ];
 
   # Command not found alternative for flakes
   programs.command-not-found.enable = true;
@@ -83,6 +105,12 @@ in {
     xdg-utils # Adds some xdg-open commands and stuff
     nodePackages.tailwindcss # Tailwind cli tool
     cargo-generate # Generates templates from rust cargo
+    cargo-leptos    # Leptos build tool for SSR
+    # ollama  # Docker for LLMs
+    sass    # CLI Tool for SCSS files
+    lutris  # Game launcher
+    distrobox
+    steamPackages.steam-runtime
 
     # Neovim #
 
@@ -104,6 +132,7 @@ in {
     ltex-ls # Latex and markdown Language server
     black # Python formatter
     nixfmt # Nix formatter
+    rust-analyzer   # Rust LSP
 
     # GUI Applications #
 
@@ -145,6 +174,14 @@ in {
     oldGlibcVersion.glibc
     oldJava8Version.openjdk8
     prismlauncher # Minecraft Launcher
+    (import ./custom_pkgs/ollama.nix {
+      inherit (pkgs);
+      lib = pkgs.lib;
+      buildGoModule = pkgs.buildGoModule;
+      fetchFromGitHub = pkgs.fetchFromGitHub;
+      stdenv = pkgs.stdenv;
+      darwin = pkgs.darwin;
+    })   # Ollama newer version
   ];
 
   fonts.packages = with pkgs; [
