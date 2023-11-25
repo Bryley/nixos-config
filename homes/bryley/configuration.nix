@@ -4,7 +4,7 @@
     # Define a user account. Don't forget to set a password with ‘passwd’.
     users.users.bryley = {
         isNormalUser = true;
-        extraGroups = [ "wheel" "networkmanager" "davfs2" "docker" ]; # Enable ‘sudo’ for the user.
+        extraGroups = [ "wheel" "networkmanager" "davfs2" "docker" "libvirtd" ]; # Enable ‘sudo’ for the user.
         shell = pkgs.zsh;
     };
 

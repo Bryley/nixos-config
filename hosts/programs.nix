@@ -42,18 +42,24 @@ in {
   };
   services.blueman.enable = true;
   programs.zsh.enable = true;
-  programs.steam.enable = true;
-  hardware.opengl.driSupport32Bit = true;
+  # programs.steam.enable = true;
+  # hardware.opengl.driSupport32Bit = true;
 
-  nixpkgs.overlays = [
-    (final: prev: {
-      steam = prev.steam.override ({ extraPkgs ? pkgs': [], ... }: {
-        extraPkgs = pkgs': (extraPkgs pkgs') ++ (with pkgs'; [
-          libgdiplus
-        ]);
-      });
-    })
-  ];
+  services.flatpak.enable = true;
+  xdg.portal.enable = true;
+
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;
+
+  # nixpkgs.overlays = [
+  #   (final: prev: {
+  #     steam = prev.steam.override ({ extraPkgs ? pkgs': [], ... }: {
+  #       extraPkgs = pkgs': (extraPkgs pkgs') ++ (with pkgs'; [
+  #         libgdiplus
+  #       ]);
+  #     });
+  #   })
+  # ];
 
   # Command not found alternative for flakes
   programs.command-not-found.enable = true;
@@ -105,12 +111,17 @@ in {
     xdg-utils # Adds some xdg-open commands and stuff
     nodePackages.tailwindcss # Tailwind cli tool
     cargo-generate # Generates templates from rust cargo
-    cargo-leptos    # Leptos build tool for SSR
+    cargo-leptos # Leptos build tool for SSR
     # ollama  # Docker for LLMs
-    sass    # CLI Tool for SCSS files
-    lutris  # Game launcher
+    sass # CLI Tool for SCSS files
+    lutris # Game launcher
     distrobox
-    steamPackages.steam-runtime
+    # PR: 267722
+    (virt-manager.overrideAttrs (old: {
+      nativeBuildInputs = old.nativeBuildInputs ++ [ wrapGAppsHook ];
+      buildInputs = lib.lists.subtractLists [ wrapGAppsHook ] old.buildInputs
+        ++ [ gst_all_1.gst-plugins-base gst_all_1.gst-plugins-good ];
+    }))
 
     # Neovim #
 
@@ -132,7 +143,7 @@ in {
     ltex-ls # Latex and markdown Language server
     black # Python formatter
     nixfmt # Nix formatter
-    rust-analyzer   # Rust LSP
+    rust-analyzer # Rust LSP
 
     # GUI Applications #
 
@@ -175,13 +186,14 @@ in {
     oldJava8Version.openjdk8
     prismlauncher # Minecraft Launcher
     (import ./custom_pkgs/ollama.nix {
-      inherit (pkgs);
+      inherit (pkgs)
+      ;
       lib = pkgs.lib;
       buildGoModule = pkgs.buildGoModule;
       fetchFromGitHub = pkgs.fetchFromGitHub;
       stdenv = pkgs.stdenv;
       darwin = pkgs.darwin;
-    })   # Ollama newer version
+    }) # Ollama newer version
   ];
 
   fonts.packages = with pkgs; [
